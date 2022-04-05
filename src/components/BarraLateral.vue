@@ -73,7 +73,7 @@ label #sidebar_btn {
 }
 
 label #sidebar_btn:hover {
-  color: rgb(27, 95, 196);
+  color: rgb(48, 203, 241);
 }
 
 #check:checked ~ .sidebar {

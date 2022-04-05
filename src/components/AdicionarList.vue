@@ -29,6 +29,7 @@ export default defineComponent({
     novoTodo() {
       this.listaTodo.push(this.descricao);
       this.$emit("aoSalvarTodo", this.listaTodo);
+      this.descricao = ''
     },
   },
 });
@@ -43,6 +44,7 @@ export default defineComponent({
   border: none;
   outline: none;
   padding: 4px;
+  font-size: 20px;
 
 }
 
@@ -51,7 +53,16 @@ export default defineComponent({
     height: 5vh;
     padding: 4px;
     border: none;
-    padding: 4px;
+    padding: 6px;
     border-radius: 6px;
+    background-color: rgb(42, 188, 224);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.adicionar_btn:hover{
+  background-color: rgb(46, 138, 161);
 }
 </style>

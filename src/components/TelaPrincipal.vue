@@ -3,9 +3,11 @@
     <div>
       <AdicionarList @aoSalvarTodo="organizarLista($event)" />
     </div>
-    <ul class="lista">
-      <li v-for="(todo, index) in todoList" :key="index">{{todo}}</li>
-    </ul>
+    <div>
+      <ul class="lista">
+        <li v-for="(todo, index) in todoList" :key="index">{{ todo }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -27,19 +29,25 @@ export default defineComponent({
 
   methods: {
     organizarLista(evento: Array<string>) {
-      this.todoList = evento
-      console.log(evento)
+      this.todoList = evento;
     },
   },
 });
 </script>
 <style >
-.box{
-    
+.lista {
+  margin-top: 30px;
+  margin-left: 280px;
+  width: 120vh;
+  list-style: none;
+  
 }
 
-.lista{
-    margin-top: 100px;
-    margin-left: 300px;
+li {
+  margin-top: 10px;
+  background: rgba(243, 224, 253, 0.747);
+  border-radius: 6px;
+    font-size: 18px;
+    padding: 5px;
 }
 </style>
