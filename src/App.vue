@@ -1,27 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <main>
+    <div class="esquerda">
+      <BarraLateral />
+      <div class="telaprincipal">
+        <TelaPrincipal/> 
+      </div>
+    </div>
+  </main>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent } from "vue";
+import BarraLateral from "./components/BarraLateral.vue";
+import TelaPrincipal from "./components/TelaPrincipal.vue";
+//mport AdicionarList from "./components/AdicionarList.vue"
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
+    BarraLateral,
+    TelaPrincipal,
+    //AdicionarList,
+  },
 });
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+main {
+  background: url(assets/fundo.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  cursor: default;
+}
+
+.telaprincipal {
+
 }
 </style>
