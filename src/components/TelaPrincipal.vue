@@ -5,7 +5,9 @@
     </div>
     <div>
       <ul class="lista">
-        <li v-for="(todo, index) in todoList" :key="index">{{ todo }}</li>
+        <li v-for="(todo, index) in todoList" :key="index">
+          {{ todo }}<ion-icon name="checkbox-outline"></ion-icon>
+        </li>
       </ul>
     </div>
   </div>
@@ -40,14 +42,23 @@ export default defineComponent({
   margin-left: 280px;
   width: 120vh;
   list-style: none;
-  
 }
 
 li {
   margin-top: 10px;
   background: rgba(243, 224, 253, 0.747);
   border-radius: 6px;
-    font-size: 18px;
-    padding: 5px;
+  font-size: 18px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 25px;
+  color: rgb(59, 59, 59);
+}
+
+.lista ion-icon{
+  margin-top: 5px;
+  cursor: pointer;
 }
 </style>
