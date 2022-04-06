@@ -1,9 +1,9 @@
 <template>
   <main>
     <div class="esquerda">
-      <BarraLateral />
+      <BarraLateral  />
       <div class="telaprincipal">
-        <TelaPrincipal/> 
+        <TelaPrincipal @aoAdicionarTodo="adicionarTodo"/> 
       </div>
     </div>
   </main>

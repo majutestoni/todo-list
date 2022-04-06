@@ -10,7 +10,7 @@
   </header>
   <div class="sidebar">
     <center>
-      <img  :src="imagem" class="imagem"  />
+      <img src="../assets/logo.png" class="imagem" alt="" />
       <h2>Maria</h2>
     </center>
     <a href="#"
@@ -19,7 +19,7 @@
     <a href="#"
       ><ion-icon name="calendar-outline"></ion-icon><span>Calendario</span></a
     >
-    <a href="#"
+    <a href="#" @click="AdicionarTodo"
       ><ion-icon name="duplicate-outline"></ion-icon
       ><span>Adicionar todo</span></a
     >
@@ -30,12 +30,20 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "BarraLateral",
-  data (){
-      return {
-         // imagem: './assets/logo.png',
-    
-      }
-  }
+  emits: ["aoAdicionarTodo"],
+  data() {
+    return {
+      // imagem: '../assets/logo.png',
+      modoAdicionarAtivo: false,
+    };
+  },
+
+  methods: {
+    AdicionarTodo() {
+      this.modoAdicionarAtivo = !this.modoAdicionarAtivo;
+      this.$emit("aoAdicionarTodo", this.modoAdicionarAtivo)
+    },
+  },
 });
 </script>
 
