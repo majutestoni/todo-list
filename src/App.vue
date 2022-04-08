@@ -2,11 +2,10 @@
   <main>
     <div class="esquerda">
       <BarraLateral />
-      <div class="telaprincipal">
+      <div>
         <TelaPrincipal
-          v-if="modoMostrarTodo == true"
-          class="telaprincipal"
-          :class="{ modoTodo: modoMostrarTodo }"
+         id="teste"
+         class="telaTodo"
           @aoAdicionarTodo="mostrarAdicionarTodo"
         />
       </div>
@@ -22,6 +21,7 @@ import TelaPrincipal from "./components/TelaPrincipal.vue";
 
 export default defineComponent({
   name: "App",
+  emits: ["aoMostrarTodo"],
   components: {
     BarraLateral,
     TelaPrincipal,
@@ -35,11 +35,15 @@ export default defineComponent({
   },
 
   methods: {
+    //Recebido da barra lateral
     mostrarAdicionarTodo() {
-      this.modoMostrarTodo = !this.modoMostrarTodo;
-      const body = document.getElementById('telaPrincipal') // iniciar teste utilizando assim
-      //alterar display para block 
-      // https://pt.stackoverflow.com/questions/481108/como-manipular-css-com-vue
+      //Realizar troca de display none para block
+      console.log('clicou')
+      //está clicando
+      this.$emit("aoMostrarTodo", this.modoMostrarTodo);
+      const telaPrincipal = document.getElementById('text')
+      //não está alterando
+      telaPrincipal?.setAttribute('style', 'display: block');
     },
   },
 });
@@ -53,11 +57,9 @@ main {
   height: 100vh;
   cursor: default;
 }
-.telaPrincipal {
+
+.telaTodo {
   display: none;
 }
 
-.telaPrincipal.modoTodo {
-  display: block;
-}
 </style>

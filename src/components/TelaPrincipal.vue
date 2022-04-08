@@ -1,11 +1,11 @@
 <template>
   <div class="box">
-    <div>
+    <div >
       <AdicionarList @aoSalvarTodo="organizarLista($event)" />
     </div>
     <div>
       <ul class="lista">
-        <li v-for="(todo, index) in todoList" :key="index">
+        <li v-for="(todo, index) in todoList" :key="index" @click="trocarCor">
           {{ todo }}<ion-icon name="checkbox-outline"></ion-icon>
         </li>
       </ul>
@@ -33,6 +33,13 @@ export default defineComponent({
     organizarLista(evento: Array<string>) {
       this.todoList = evento;
     },
+
+    trocarCor(){
+      //Não está trocando a cor do check
+      const cor = document.querySelector('ion-icon[name="checkbox-outline"]')
+      cor?.setAttribute('style', 'color: blue')
+      console.log('check')
+    }
   },
 });
 </script>

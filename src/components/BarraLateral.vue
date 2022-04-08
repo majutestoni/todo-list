@@ -40,8 +40,9 @@ export default defineComponent({
 
   methods: {
     AdicionarTodo() {
-      this.modoAdicionarAtivo = !this.modoAdicionarAtivo;
+     // this.modoAdicionarAtivo = !this.modoAdicionarAtivo;
       this.$emit("aoAdicionarTodo", this.modoAdicionarAtivo)
+      console.log('clicou')
     },
   },
 });
