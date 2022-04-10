@@ -1,12 +1,14 @@
 <template>
   <div class="box">
-    <div >
+    <div>
       <AdicionarList @aoSalvarTodo="organizarLista($event)" />
     </div>
     <div>
       <ul class="lista">
-        <li v-for="(todo, index) in todoList" :key="index" @click="trocarCor">
-          {{ todo }}<ion-icon name="checkbox-outline"></ion-icon>
+        <li v-for="(todo, index) in todoList" :key="index">
+          <button @click="concluirTarefa">teste</button>
+          {{ todo }}<ion-icon name="checkbox-outline" :style="estilo"></ion-icon
+          ><ion-icon name="square-outline" :style="estilo"></ion-icon>
         </li>
       </ul>
     </div>
@@ -26,6 +28,10 @@ export default defineComponent({
   data() {
     return {
       todoList: [] as Array<string>,
+      tarefaConcluida: false,
+      estilo: {
+        display: 'block',
+      },
     };
   },
 
@@ -34,12 +40,26 @@ export default defineComponent({
       this.todoList = evento;
     },
 
-    trocarCor(){
-      //Não está trocando a cor do check
-      const cor = document.querySelector('ion-icon[name="checkbox-outline"]')
-      cor?.setAttribute('style', 'color: blue')
-      console.log('check')
-    }
+    concluirTarefa() {
+      const quadrado1 = document.getElementById("square-outline");
+      const checkConcluido = document.getElementById("checkbox-outline");
+
+//A troca de estilo no proprio componentes está funcionado, porem com o metodo não funcionar
+//verificar setAttribute
+      this.tarefaConcluida = !this.tarefaConcluida;
+      if (this.tarefaConcluida == true) {
+        quadrado1?.setAttribute("estilo", "display: none");
+        checkConcluido?.setAttribute("estilo", "display: block");
+        console.log("verdade");
+      } else {
+        quadrado1?.setAttribute("estilo", "display: block");
+        checkConcluido?.setAttribute("estilo", "display: none");
+        console.log("falso");
+      }
+
+      //square-outline
+      //checkbox-outline
+    },
   },
 });
 </script>
@@ -64,7 +84,7 @@ li {
   color: rgb(59, 59, 59);
 }
 
-.lista ion-icon{
+.lista ion-icon {
   margin-top: 5px;
   cursor: pointer;
 }

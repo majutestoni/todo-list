@@ -10,8 +10,8 @@
   </header>
   <div class="sidebar">
     <center>
-      <img src="../assets/logo.png" class="imagem" alt="" />
-      <h2>Maria</h2>
+      <img src="../assets/logo2.jpg" class="imagem" alt="" />
+      <h2>Maju</h2>
     </center>
     <a href="#"
       ><ion-icon name="desktop-outline"></ion-icon><span>Alterar tema</span></a
@@ -19,7 +19,7 @@
     <a href="#"
       ><ion-icon name="calendar-outline"></ion-icon><span>Calendario</span></a
     >
-    <a href="#" @click="mostrarTodoBotao" class="botaoAdicionar">
+    <a href="#" @click="mostrarTodoBotao">
       <ion-icon name="duplicate-outline"></ion-icon><span>{{textoBotao}}</span>
     </a>
   </div>
@@ -32,7 +32,6 @@ export default defineComponent({
   emits: ["aoMostrarTodoBotao"],
   data() {
     return {
-      // imagem: '../assets/logo.png',
       modoAdicionarAtivo: false,
     };
   },
@@ -41,7 +40,7 @@ export default defineComponent({
       if (this.modoAdicionarAtivo) {
         return "Desativar Todo";
       }
-      return 'Adicionar Todo'
+      return 'Ativar Todo'
     },
   },
 
@@ -146,24 +145,6 @@ label #sidebar_btn:hover {
 }
 
 .sidebar a:hover {
-  background: rgba(69, 11, 116, 0.808);
-}
-
-.botaoAdicionar {
-  background: none;
-  color: #fff;
-  display: block;
-  width: 100%;
-  line-height: 60px;
-  text-decoration: none;
-  border: none;
-  padding-left: 40px;
-  box-sizing: border-box;
-  transition: 0.2s;
-  cursor: pointer;
-}
-
-.botaoAdicionar:hover {
   background: rgba(69, 11, 116, 0.808);
 }
 

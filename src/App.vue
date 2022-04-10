@@ -35,14 +35,9 @@ export default defineComponent({
   },
 
   methods: {
-    //Recebido da barra lateral
+    //Recebido da barra lateral -> Botao para mostrar adicionar todo e desativar
     mostrarAdicionarTodo(modoMostrarTodo: boolean) {
       this.modoMostrarTodo = modoMostrarTodo
-      //Realizar troca de display none para block
-      console.log("clicou");
-      //está clicando
-      // this.$emit("aoMostrarTodo", this.modoMostrarTodo);
-      
     },
   },
 });
