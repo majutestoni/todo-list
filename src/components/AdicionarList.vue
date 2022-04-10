@@ -1,17 +1,18 @@
 <template>
-  <div class="adicionar" role="form">
-    <input
-      class="descricao"
-      type="text"
-      placeholder="Adicione seu todo"
-      v-model="descricao"
-      id="descricao"
-      name="descricao"
-      
-    />
-    <button class="adicionar_btn" @click="novoTodo" type="submit">
-      Adicionar
-    </button>
+  <div class="fundo">
+    <div class="adicionar" role="form">
+      <input
+        class="descricao"
+        type="text"
+        placeholder="Adicione seu todo"
+        v-model="descricao"
+        id="descricao"
+        name="descricao"
+      />
+      <button class="adicionar_btn" @click="novoTodo" type="submit">
+        Adicionar
+      </button>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -32,9 +33,8 @@ export default defineComponent({
     novoTodo() {
       this.listaTodo.push(this.descricao);
       this.$emit("aoSalvarTodo", this.listaTodo);
-      this.descricao = ''
+      this.descricao = "";
     },
-    
   },
 });
 </script>

@@ -1,12 +1,12 @@
 <template>
   <main>
     <div class="esquerda">
-      <BarraLateral />
+      <BarraLateral @aoMostrarTodoBotao="mostrarAdicionarTodo" />
       <div>
         <TelaPrincipal
-         id="teste"
-         class="telaTodo"
-          @aoAdicionarTodo="mostrarAdicionarTodo"
+          id="teste"
+          class="telaTodo"
+          :class="{ 'mostrar': modoMostrarTodo }"
         />
       </div>
     </div>
@@ -36,14 +36,13 @@ export default defineComponent({
 
   methods: {
     //Recebido da barra lateral
-    mostrarAdicionarTodo() {
+    mostrarAdicionarTodo(modoMostrarTodo: boolean) {
+      this.modoMostrarTodo = modoMostrarTodo
       //Realizar troca de display none para block
-      console.log('clicou')
+      console.log("clicou");
       //está clicando
-      this.$emit("aoMostrarTodo", this.modoMostrarTodo);
-      const telaPrincipal = document.getElementById('text')
-      //não está alterando
-      telaPrincipal?.setAttribute('style', 'display: block');
+      // this.$emit("aoMostrarTodo", this.modoMostrarTodo);
+      
     },
   },
 });
@@ -60,6 +59,10 @@ main {
 
 .telaTodo {
   display: none;
+ 
 }
 
+.telaTodo.mostrar {
+  display: block;
+}
 </style>

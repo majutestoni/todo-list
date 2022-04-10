@@ -19,10 +19,9 @@
     <a href="#"
       ><ion-icon name="calendar-outline"></ion-icon><span>Calendario</span></a
     >
-    <a href="#" @click="AdicionarTodo"
-      ><ion-icon name="duplicate-outline"></ion-icon
-      ><span>Adicionar todo</span></a
-    >
+    <a href="#" @click="mostrarTodoBotao" class="botaoAdicionar">
+      <ion-icon name="duplicate-outline"></ion-icon><span>{{textoBotao}}</span>
+    </a>
   </div>
 </template>
 <script lang="ts">
@@ -30,19 +29,26 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "BarraLateral",
-  emits: ["aoAdicionarTodo"],
+  emits: ["aoMostrarTodoBotao"],
   data() {
     return {
       // imagem: '../assets/logo.png',
       modoAdicionarAtivo: false,
     };
   },
+  computed: {
+    textoBotao() {
+      if (this.modoAdicionarAtivo) {
+        return "Desativar Todo";
+      }
+      return 'Adicionar Todo'
+    },
+  },
 
   methods: {
-    AdicionarTodo() {
-     // this.modoAdicionarAtivo = !this.modoAdicionarAtivo;
-      this.$emit("aoAdicionarTodo", this.modoAdicionarAtivo)
-      console.log('clicou')
+    mostrarTodoBotao() {
+      this.modoAdicionarAtivo = !this.modoAdicionarAtivo;
+      this.$emit("aoMostrarTodoBotao", this.modoAdicionarAtivo);
     },
   },
 });
@@ -140,6 +146,24 @@ label #sidebar_btn:hover {
 }
 
 .sidebar a:hover {
+  background: rgba(69, 11, 116, 0.808);
+}
+
+.botaoAdicionar {
+  background: none;
+  color: #fff;
+  display: block;
+  width: 100%;
+  line-height: 60px;
+  text-decoration: none;
+  border: none;
+  padding-left: 40px;
+  box-sizing: border-box;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.botaoAdicionar:hover {
   background: rgba(69, 11, 116, 0.808);
 }
 
