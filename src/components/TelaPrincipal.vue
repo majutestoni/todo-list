@@ -6,9 +6,23 @@
     <div>
       <ul class="lista">
         <li v-for="(todo, index) in todoList" :key="index">
-          <button @click="concluirTarefa">teste</button>
-          {{ todo }}<ion-icon name="checkbox-outline" :style="estilo"></ion-icon
-          ><ion-icon name="square-outline" :style="estilo"></ion-icon>
+          <div class="fleg">
+            <ion-icon
+              @click="concluirTarefa(index)"
+              name="checkbox-outline"
+              :style="estiloNone"
+            ></ion-icon
+            ><ion-icon
+              @click="concluirTarefa(index)"
+              name="square-outline"
+              :style="estiloBlock"
+            ></ion-icon>
+            <p>{{ todo }}</p>
+          </div>
+          <div class="icones">
+            <ion-icon name="trash-outline"></ion-icon>
+            <ion-icon name="create-outline"></ion-icon>
+          </div>
         </li>
       </ul>
     </div>
@@ -29,8 +43,11 @@ export default defineComponent({
     return {
       todoList: [] as Array<string>,
       tarefaConcluida: false,
-      estilo: {
-        display: 'block',
+      estiloBlock: {
+        display: "block",
+      },
+      estiloNone: {
+        display: "none",
       },
     };
   },
@@ -40,30 +57,23 @@ export default defineComponent({
       this.todoList = evento;
     },
 
-    concluirTarefa() {
-      const quadrado1 = document.getElementById("square-outline");
-      const checkConcluido = document.getElementById("checkbox-outline");
-
-//A troca de estilo no proprio componentes está funcionado, porem com o metodo não funcionar
-//verificar setAttribute
+    concluirTarefa(elemento: HTMLElement) {
+      //A troca de estilo no proprio componentes está funcionado, porem com o metodo não funcionar
+      //verificar setAttribute
       this.tarefaConcluida = !this.tarefaConcluida;
-      if (this.tarefaConcluida == true) {
-        quadrado1?.setAttribute("estilo", "display: none");
-        checkConcluido?.setAttribute("estilo", "display: block");
-        console.log("verdade");
-      } else {
-        quadrado1?.setAttribute("estilo", "display: block");
-        checkConcluido?.setAttribute("estilo", "display: none");
-        console.log("falso");
-      }
 
-      //square-outline
-      //checkbox-outline
+      if (this.tarefaConcluida == true) {
+        this.estiloBlock.display = "none";
+        this.estiloNone.display = "block";
+      } else {
+        this.estiloBlock.display = "block";
+        this.estiloNone.display = "none";
+      }
     },
-  },
+  }
 });
 </script>
-<style >
+<style scoped>
 .lista {
   margin-top: 30px;
   margin-left: 280px;
@@ -75,8 +85,8 @@ li {
   margin-top: 10px;
   background: rgba(243, 224, 253, 0.747);
   border-radius: 6px;
-  font-size: 18px;
-  padding: 5px;
+  font-size: 19px;
+  padding: 6px;
   display: flex;
   justify-content: space-between;
   padding-left: 15px;
@@ -87,5 +97,26 @@ li {
 .lista ion-icon {
   margin-top: 5px;
   cursor: pointer;
+  margin-right: -5px;
 }
-</style>
+
+.fleg {
+  display: flex;
+  width: 94%;
+}
+
+.fleg p {
+  margin-left: 15px;
+}
+
+.fleg ion-icon {
+  font-size: 18px;
+}
+
+.icones {
+  display: flex;
+  width: 5%;
+  justify-content: space-between;
+  font-size: 18px;
+}
+</style>>
