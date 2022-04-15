@@ -20,8 +20,8 @@
             <p>{{ todo }}</p>
           </div>
           <div class="icones">
-            <ion-icon name="trash-outline"></ion-icon>
-            <ion-icon name="create-outline"></ion-icon>
+            <ion-icon @click="excluir(index)" name="trash-outline"></ion-icon>
+            <ion-icon @click="editar" name="create-outline"></ion-icon>
           </div>
         </li>
       </ul>
@@ -70,6 +70,17 @@ export default defineComponent({
         this.estiloNone.display = "none";
       }
     },
+
+    excluir (){
+      console.log('teste')
+      //bota para exlcuir item do todolist
+      this.todoList.splice
+    },
+
+    editar(){
+      console.log('teste2')
+      //botao para editar item
+    }
   }
 });
 </script>

@@ -9,9 +9,7 @@
         id="descricao"
         name="descricao"
       />
-      <button class="adicionar_btn" @click="novoTodo" type="submit">
-        Adicionar
-      </button>
+      <button class="adicionar_btn" @click="novoTodo" type="submit">+</button>
     </div>
   </div>
 </template>
@@ -54,10 +52,11 @@ export default defineComponent({
 .adicionar_btn {
   margin-left: 10px;
   height: 5vh;
+  width: 5vh;
   padding: 4px;
   border: none;
   padding: 6px;
-  border-radius: 6px;
+  border-radius: 100%;
   background-color: rgb(42, 188, 224);
   color: #fff;
   font-size: 18px;
