@@ -5,8 +5,7 @@
         class="descricao"
         type="text"
         placeholder="Adicione seu todo"
-        v-model="descricao"
-        id="descricao"
+        v-model="description"
         name="descricao"
       />
       <button class="adicionar_btn" @click="novoTodo" type="submit">+</button>
@@ -16,22 +15,33 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
+class Item {
+  static itemCount = 0;
+  public description;
+  public id: number;
+
+  constructor(description="") {
+    Item.itemCount++;
+    this.id = Item.itemCount;
+    this.description = description;
+  }
+}
+
 export default defineComponent({
   name: "AdicionarList",
   emits: ["aoSalvarTodo"],
   data() {
     return {
-      id: 0,
-      descricao: "",
-      listaTodo: [] as Array<string>,
+      description: "",
+      listaTodo: [] as Array<Item>,
     };
   },
 
   methods: {
     novoTodo() {
-      this.listaTodo.push(this.descricao);
+      this.listaTodo.push(new Item(this.description));
       this.$emit("aoSalvarTodo", this.listaTodo);
-      this.descricao = "";
+      this.description = "";
     },
   },
 });
