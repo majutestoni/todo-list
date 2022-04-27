@@ -7,8 +7,8 @@
       <ul class="lista">
         <li v-for="(todo, index) in todoList" :key="index">
           <div class="fleg">
-            <input type="checkbox" class="concluir" name="" id="" />           
-            <p>{{ todo.description }}</p>           
+            <input type="checkbox" name="" id="checkbox" />
+            <label for="checkbox">{{ todo.description }}</label>
             <input v-show="editID === todo.id" type="text" />
           </div>
           <div class="icones">
@@ -91,11 +91,7 @@ export default defineComponent({
   },
 });
 </script>
-<style >
-
- 
-
-
+<style scoped>
 .lista {
   margin-top: 30px;
   margin-left: 280px;
@@ -116,6 +112,10 @@ li {
   color: rgb(59, 59, 59);
 }
 
+li:hover{
+   background-color: rgba(227, 193, 255, 0.808);
+}
+
 .lista ion-icon {
   margin-top: 5px;
   cursor: pointer;
@@ -123,12 +123,38 @@ li {
 }
 
 .fleg {
-  display: flex;
   width: 94%;
+  cursor: pointer;
 }
 
-.fleg p {
+.fleg label {
   margin-left: 15px;
+  cursor: pointer;
+}
+
+.fleg input {
+  display: none;
+}
+
+.fleg input + label:before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background-color: rgb(252, 246, 255);
+  border: 1px solid gray;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  margin-left: -16px;
+}
+
+.fleg input:checked + label:before {
+  background-image: url("data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 10 10'%3E%3Cg class='nc-icon-wrapper' stroke-width='1' fill='%23555555'%3E%3Cpath fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10' data-cap='butt' d='M2.83 4.72l1.58 1.58 2.83-2.83'/%3E%3C/g%3E%3C/svg%3E");
+  background-color: rgba(135, 71, 170, 0.747);
+  background-position: center;
+  border: none;
+  padding: 1px;
 }
 
 .icones {
@@ -137,36 +163,4 @@ li {
   justify-content: space-between;
   font-size: 18px;
 }
-
-.concluir{
- margin-top: 3px;
-height: 18px;
-width: 18px;
-background-color: rgb(238, 238, 238);
-border-radius: 50px;
-cursor: pointer;
-}
-
-.concluir:hover{
-  background-color: aqua;
-}
-
-.fleg:hover input ~ .concluir{
-  background-color: aqua;
-}
-
-.fleg input:checked ~ .concluir{
-  background-color: rgb(255, 0, 0);
-}
-
-label {
-  position: relative;
-  cursor: pointer;
-  font-size: 1.5em;
-  font-weight: 600;
-  padding: 0 0.25em 0;
-  user-select: none;
-}
-
-
 </style>>
