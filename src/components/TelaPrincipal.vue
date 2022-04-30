@@ -46,12 +46,6 @@ export default defineComponent({
       todoList: [] as Array<Item>,
       tarefaConcluida: false,
       editID: NaN,
-      estiloBlock: {
-        display: "block",
-      },
-      estiloNone: {
-        display: "none",
-      },
     };
   },
 
@@ -60,21 +54,8 @@ export default defineComponent({
       this.todoList = evento;
     },
 
-    concluirTarefa(elemento: HTMLElement) {
-      this.tarefaConcluida = !this.tarefaConcluida;
-
-      if (this.tarefaConcluida == true) {
-        this.estiloBlock.display = "none";
-        this.estiloNone.display = "block";
-      } else {
-        this.estiloBlock.display = "block";
-        this.estiloNone.display = "none";
-      }
-    },
 
     excluir(index: number) {
-      console.log("teste");
-
       this.todoList.splice(index, 1);
     },
 
@@ -112,8 +93,8 @@ li {
   color: rgb(59, 59, 59);
 }
 
-li:hover{
-   background-color: rgba(227, 193, 255, 0.808);
+li:hover {
+  background-color: rgba(227, 193, 255, 0.808);
 }
 
 .lista ion-icon {
