@@ -8,7 +8,9 @@
         <li v-for="(todo, index) in todoList" :key="index">
           <div class="fleg">
             <input type="checkbox" name="" id="checkbox" />
-            <label for="checkbox">{{ todo.description }}</label>
+            <label for="checkbox" style="abriInput">{{
+              todo.description
+            }}</label>
             <input v-show="editID === todo.id" type="text" />
           </div>
           <div class="icones">
@@ -45,7 +47,7 @@ export default defineComponent({
     return {
       todoList: [] as Array<Item>,
       tarefaConcluida: false,
-      editID: NaN,
+      editID: false,
     };
   },
 
@@ -54,20 +56,18 @@ export default defineComponent({
       this.todoList = evento;
     },
 
-
     excluir(index: number) {
       this.todoList.splice(index, 1);
     },
 
     editar(id: number) {
-      //essa função ira editar uma string, porem só estou com o array
-
-      if (this.editID === id) {
-        this.editID = NaN;
+      this.editID = !this.editID;
+      if (this.editID === true) {
+        console.log("verdade");
         return;
+      } else {
+        console.log("falso");
       }
-
-      this.editID = id;
     },
   },
 });
@@ -105,7 +105,6 @@ li:hover {
 
 .fleg {
   width: 94%;
-  cursor: pointer;
 }
 
 .fleg label {
